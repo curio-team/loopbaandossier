@@ -1,0 +1,98 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-active {
+    color: white !important;
+    font-weight: bold;
+}
+
+.nav-links a {
+    @apply mx-3 text-gray-100;
+}
+
+.header-home {
+    @apply bg-yellow-400;
+}
+
+.header-home-title {
+    @apply text-purple-500
+}
+
+.content-home {
+    @apply bg-purple-500
+}
+
+.header-introduction {
+    @apply bg-green-400;
+}
+
+.header-introduction-title {
+    @apply text-pink-300;
+}
+
+.content-introduction {
+    @apply bg-pink-300;
+}
+
+.header-qualities {
+    @apply bg-blue-800;
+}
+
+.header-qualities-title {
+    @apply text-fuchsia-600;
+}
+
+.content-qualities {
+    @apply bg-fuchsia-600;
+}
+
+.header-motives {
+    @apply bg-red-800;
+}
+
+.header-motives-title {
+    @apply text-sky-300;
+}
+
+.content-motives {
+    @apply bg-sky-300;
+}
+
+.header-exploration {
+    @apply bg-purple-500;
+}
+
+.header-exploration-title {
+    @apply text-pink-500;
+}
+
+.content-exploration {
+    @apply bg-pink-500;
+}
+
+.header-experience {
+    @apply bg-pink-700;
+}
+
+.header-experience-title {
+    @apply text-blue-700;
+}
+
+.content-experience {
+    @apply bg-blue-700;
+}
+
+.header-networks {
+    @apply bg-red-600;
+}
+
+.header-networks-title {
+    @apply text-pink-400;
+}
+
+.content-networks {
+    @apply bg-pink-400;
+}
