@@ -13,13 +13,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-purple-500">
-        <header>
-            @include('components.home-header')
-        </header>
-
-        <main>
-            @yield('content')
-        </main>
+    <body>
+        <div class="font-sans text-gray-900 antialiased">
+            {{ $slot }}
+        </div>
     </body>
 </html>
