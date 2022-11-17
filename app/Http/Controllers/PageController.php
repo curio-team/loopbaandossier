@@ -11,114 +11,87 @@ class PageController extends Controller
     public function showHome() {
         return view('home');
     }
-
+    
     public function showMain($studentSlug) {
         $student = Student::where('slug', $studentSlug)->first();
-
-        $header = [
-            'title' => 'Naam Student',
-            'header_type' => 'header-home',
-            'title_color' => 'header-home-title'
-        ];
-        View::share('page_color', 'content-home');
+        
+        $pageColor = $student->pages->main_content_color;
+        
         return view('main', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showIntroduction($studentSlug) {
         $student = Student::where('slug', $studentSlug)->first();
-
-        $header = [
-            'title' => 'Dit ben ik',
-            'header_type' => 'header-introduction',
-            'title_color' => 'header-introduction-title'
-        ];
-        View::share('page_color', 'content-introduction');
+        
+        $pageColor = $student->pages->introduction_content_color;
+        
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showQualities($studentSlug)
     {
         $student = Student::where('slug', $studentSlug)->first();
+        
+        $pageColor = $student->pages->qualities_content_color;
 
-        $header = [
-            'title' => 'Hier ben ik goed in!',
-            'header_type' => 'header-qualities',
-            'title_color' => 'header-qualities-title'
-        ];
-        View::share('page_color', 'content-qualities');
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showMotives($studentSlug)
     {
         $student = Student::where('slug', $studentSlug)->first();        
         
-        $header = [
-            'title' => 'Dit vind ik leuk!',
-            'header_type' => 'header-motives',
-            'title_color' => 'header-motives-title'
-        ];
-        View::share('page_color', 'content-motives');
+        $pageColor = $student->pages->motives_content_color;
+
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showExploration($studentSlug)
     {
         $student = Student::where('slug', $studentSlug)->first();
-
-        $header = [
-            'title' => 'Dit is mijn werkervaring',
-            'header_type' => 'header-exploration',
-            'title_color' => 'header-exploration-title'
-        ];
-        View::share('page_color', 'content-exploration');
+        
+        $pageColor = $student->pages->exploration_content_color;
+        
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showExperience($studentSlug)
     {
         $student = Student::where('slug', $studentSlug)->first();
-
-        $header = [
-            'title' => 'Deze opleidingen heb ik gedaan',
-            'header_type' => 'header-experience',
-            'title_color' => 'header-experience-title'
-        ];
-        View::share('page_color', 'content-experience');
+        
+        $pageColor = $student->pages->experience_content_color;
+        
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
-
+    
     public function showNetworks($studentSlug)
     {
         $student = Student::where('slug', $studentSlug)->first();
-
-        $header = [
-            'title' => 'Deze mensen ken ik',
-            'header_type' => 'header-networks',
-            'title_color' => 'header-networks-title'
-        ];
-        View::share('page_color', 'content-networks');
+        
+        $pageColor = $student->pages->networks_content_color;
+        
         return view('page', [
             'student' => $student,
-            'header' => $header
+            'pageColor' => $pageColor,
         ]);
     }
 }
+            

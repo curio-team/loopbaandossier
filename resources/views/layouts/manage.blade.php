@@ -13,9 +13,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="content-{{ $pageColor }}">
+    <body class="content-manage">
         <header>
-            @include('components.page-header')
+            @include('components.manage-header')
         </header>
 
         <main>

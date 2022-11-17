@@ -13,86 +13,202 @@
     @apply mx-3 text-gray-100;
 }
 
-.header-home {
+.header-1 {
     @apply bg-yellow-400;
 }
 
-.header-home-title {
+.header-title-1 {
     @apply text-purple-500
 }
 
-.content-home {
+.content-1 {
     @apply bg-purple-500
 }
 
-.header-introduction {
+.color-box-1 {
+    background: linear-gradient(to top left,
+            rgba(250, 204, 21, 1) 0%,
+            rgba(250, 204, 21, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(168, 85, 247, 1) calc(50% + 0.8px),
+            rgba(168, 85, 247, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-2 {
     @apply bg-green-400;
 }
 
-.header-introduction-title {
+.header-title-2 {
     @apply text-pink-300;
 }
 
-.content-introduction {
+.content-2 {
     @apply bg-pink-300;
 }
 
-.header-qualities {
+.color-box-2 {
+    background: linear-gradient(to top left,
+            rgba(74, 222, 128, 1) 0%,
+            rgba(74, 222, 128, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(249, 168, 212, 1) calc(50% + 0.8px),
+            rgba(249, 168, 212, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-3 {
     @apply bg-blue-800;
 }
 
-.header-qualities-title {
+.header-title-3 {
     @apply text-fuchsia-600;
 }
 
-.content-qualities {
+.content-3 {
     @apply bg-fuchsia-600;
 }
 
-.header-motives {
+.color-box-3 {
+    background: linear-gradient(to top left,
+            rgba(30, 64, 175, 1) 0%,
+            rgba(30, 64, 175, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(192, 36, 211, 1) calc(50% + 0.8px),
+            rgba(192, 36, 211, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-4 {
     @apply bg-red-800;
 }
 
-.header-motives-title {
+.header-title-4 {
     @apply text-sky-300;
 }
 
-.content-motives {
+.content-4 {
     @apply bg-sky-300;
 }
 
-.header-exploration {
+.color-box-4 {
+    background: linear-gradient(to top left,
+            rgba(153, 27, 27, 1) 0%,
+            rgba(153, 27, 27, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(125, 211, 252, 1) calc(50% + 0.8px),
+            rgba(125, 211, 252, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-5 {
     @apply bg-purple-500;
 }
 
-.header-exploration-title {
+.header-title-5 {
     @apply text-pink-500;
 }
 
-.content-exploration {
+.content-5 {
     @apply bg-pink-500;
 }
 
-.header-experience {
+.color-box-5 {
+    background: linear-gradient(to top left,
+            rgba(168, 85, 247, 1) 0%,
+            rgba(168, 85, 247, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(236, 72, 153, 1) calc(50% + 0.8px),
+            rgba(236, 72, 153, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-6 {
     @apply bg-pink-700;
 }
 
-.header-experience-title {
+.header-title-6 {
     @apply text-blue-700;
 }
 
-.content-experience {
+.content-6 {
     @apply bg-blue-700;
 }
 
-.header-networks {
+.color-box-6 {
+    background: linear-gradient(to top left,
+            rgba(190, 24, 93, 1) 0%,
+            rgba(190, 24, 93, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(29, 78, 216, 1) calc(50% + 0.8px),
+            rgba(29, 78, 216, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-7 {
     @apply bg-red-600;
 }
 
-.header-networks-title {
+.header-title-7 {
     @apply text-pink-400;
 }
 
-.content-networks {
+.content-7 {
     @apply bg-pink-400;
+}
+
+.color-box-7 {
+    background: linear-gradient(to top left,
+            rgba(220, 38, 38, 1) 0%,
+            rgba(220, 38, 38, 1) calc(50% - 0.8px),
+            rgba(0, 0, 0, 1) 50%,
+            rgba(244, 114, 182, 1) calc(50% + 0.8px),
+            rgba(244, 114, 182, 1) 100%);
+    height: 50px;
+    width: 50px;
+    border: black solid 1px;
+}
+
+.header-manage {
+    @apply bg-blue-400;
+}
+
+.header-title-manage {
+    @apply text-white;
+}
+
+.content-manage {
+    @apply bg-blue-100;
+}
+
+[type=radio] {
+    @apply absolute opacity-0 w-0 h-0;
+}
+
+[type=radio]+div {
+    @apply cursor-pointer;
+}
+
+[type=radio]+img {
+    @apply cursor-pointer;
+}
+
+[type=radio]:checked+div {
+    @apply outline outline-4 outline-blue-400;
+}
+
+[type=radio]:checked+img {
+    @apply outline outline-4 outline-blue-400;
 }

@@ -1,4 +1,4 @@
-<header class="page-header {{ $header_type }}">
+<header class="header-{{ $pageColor }}">
     <div class="py-6 px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between">
                 <a href="{{ route('main', $student->slug) }}" class="font-semibold leading-tight">
@@ -10,8 +10,11 @@
                     </div>
                 </a>
             <div class="flex items-center nav-links">
+                {{-- @if($student->user_id == Auth::id())
+                    <a href="{{ route('manage', $student->slug) }}" class="font-bold {{ (request()->is('manage')) ? 'nav-active' : '' }}">Pagina's Beheren</a>
+                @endif --}}
                 <a href="{{ route('main', $student->slug) }}" class="{{ (request()->is('main')) ? 'nav-active' : '' }}">Homepagina</a>
-                <a href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voortsellen</a>
+                <a href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
                 <a href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
                 <a href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
                 <a href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
@@ -21,7 +24,7 @@
             </div>
         </div>
         <div class="flex items-center justify-center h-80">
-            <p class="{{ $title_color }} text-7xl font-semibold">{{ $student->user->name }}</p>
+            <p class="text-7xl font-semibold header-title-{{ $pageColor }}">{{ $student->user->name }}</p>
         </div>
     </div>
 </header>
