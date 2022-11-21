@@ -25,7 +25,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <textarea rows=5 class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-400" name="content_text">{{ $pageData['content_text'] }}</textarea>
+                        <textarea name="content_text">{{ $pageData['content_text'] }}</textarea>
                     </div>
                 </div>
 
@@ -41,6 +41,7 @@
                         <button type="button" onclick="document.getElementById('image').click();" class="shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                             Afbeelding Uploaden
                         </button>
+                        <span class="text-xs">Max 10MB</span>
                     </div>
                 </div>
 
@@ -98,19 +99,19 @@
                     <div class="md:w-2/3 flex">
                         <label class="mr-2">
                             <input type="radio" name="content_layout" value="1" {{ ($pageData['content_layout'] == 1) ? 'checked' : '' }}>
-                            <img src="https://cdn-icons-png.flaticon.com/512/875/875076.png" alt="">
+                            <img src="{{ asset('assets/images/type_1.png') }}" alt="">
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_layout" value="2" {{ ($pageData['content_layout'] == 2) ? 'checked' : '' }}>
-                            <img src="https://cdn-icons-png.flaticon.com/512/875/875076.png" alt="">
+                            <img src="{{ asset('assets/images/type_2.png') }}" alt="">
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_layout" value="3" {{ ($pageData['content_layout'] == 3) ? 'checked' : '' }}>
-                            <img src="https://cdn-icons-png.flaticon.com/512/875/875076.png" alt="">
+                            <img src="{{ asset('assets/images/type_3.png') }}" alt="">
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_layout" value="4" {{ ($pageData['content_layout'] == 4) ? 'checked' : '' }}>
-                            <img src="https://cdn-icons-png.flaticon.com/512/875/875076.png" alt="">
+                            <img src="{{ asset('assets/images/type_4.png') }}" alt="">
                         </label>
                     </div>
                 </div>
@@ -136,5 +137,11 @@
         }
     }
 </script>
+
+@include('components.ckeditor', [
+    'textareaNames' => [
+        'content_text',
+    ]
+])
 
 @endsection

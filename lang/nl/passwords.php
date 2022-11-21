@@ -1,22 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are the default lines which match reasons
-    | that are given by the password broker for a password update attempt
-    | has failed, such as for an invalid token or invalid new password.
-    |
-    */
-
-    'reset' => 'Jouw wachtwoord is gereset!',
-    'sent' => 'We hebben de link voor het opnieuw instellen van uw wachtwoord per e-mail verzonden!',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'Wacht alstublieft voordat u het opnieuw probeert.',
-    'user' => "We kunnen geen gebruiker met dat e-mailadres vinden.",
-
+    'reset'     => 'Het wachtwoord van uw account is gewijzigd.',
+    'sent'      => 'We hebben een e-mail verstuurd met instructies om een nieuw wachtwoord in te stellen.',
+    'throttled' => 'Gelieve even te wachten en het dan opnieuw te proberen.',
+    'token'     => 'Dit wachtwoordhersteltoken is niet geldig.',
+    'user'      => 'Geen gebruiker bekend met het e-mailadres.',
 ];

@@ -23,8 +23,17 @@
                 <a href="#"><i class="fa-solid fa-search"></i></a>
             </div>
         </div>
-        <div class="flex items-center justify-center h-80">
-            <p class="text-7xl font-semibold header-title-{{ $pageColor }}">{{ $student->user->name }}</p>
+        <div class="flex flex-col items-center justify-center h-80">
+            <div>
+                <p class="text-7xl font-semibold header-title-{{ $pageColor }}">{{ $student->user->name }}</p>
+            </div>
+            <div>
+                <p class="text-3xl mt-2 font-semibold header-title-{{ $pageColor }}">
+                    @isset($pageData)
+                        {{ $pageData['headerTitle'] }}
+                    @endisset
+                </p>
+            </div>
         </div>
     </div>
 </header>

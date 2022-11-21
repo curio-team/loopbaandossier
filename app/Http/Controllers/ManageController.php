@@ -6,12 +6,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 class ManageController extends Controller
 {
     public function manageIntroduction()
     {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->introduction_header_title,
             'content_text' => $user->student->pages->introduction_content_text,
@@ -28,7 +29,9 @@ class ManageController extends Controller
     }
 
     public function processManageIntroduction(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->introduction_header_title = $request->header_title;
         $pages->introduction_content_text = $request->content_text;
@@ -55,7 +58,7 @@ class ManageController extends Controller
 
     public function manageQualities()
     {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->qualities_header_title,
             'content_text' => $user->student->pages->qualities_content_text,
@@ -72,7 +75,9 @@ class ManageController extends Controller
     }
 
     public function processManageQualities(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->qualities_header_title = $request->header_title;
         $pages->qualities_content_text = $request->content_text;
@@ -98,7 +103,7 @@ class ManageController extends Controller
     }
 
     public function manageMotives() {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->motives_header_title,
             'content_text' => $user->student->pages->motives_content_text,
@@ -109,12 +114,15 @@ class ManageController extends Controller
 
         return view('manage', [
             'student' => $user->student,
+            'pageData' => $pageData,
             'title' => 'Motieven aanpassen',
         ]);
     }
 
     public function processManageMotives(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->motives_header_title = $request->header_title;
         $pages->motives_content_text = $request->content_text;
@@ -140,7 +148,7 @@ class ManageController extends Controller
     }
 
     public function manageExploration() {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->exploration_header_title,
             'content_text' => $user->student->pages->exploration_content_text,
@@ -157,7 +165,9 @@ class ManageController extends Controller
     }
 
     public function processManageExploration(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->exploration_header_title = $request->header_title;
         $pages->exploration_content_text = $request->content_text;
@@ -184,7 +194,7 @@ class ManageController extends Controller
 
     public function manageExperience()
     {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->experience_header_title,
             'content_text' => $user->student->pages->experience_content_text,
@@ -201,7 +211,9 @@ class ManageController extends Controller
     }
 
     public function processManageExperience(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->experience_header_title = $request->header_title;
         $pages->experience_content_text = $request->content_text;
@@ -227,7 +239,7 @@ class ManageController extends Controller
     }
 
     public function manageNetworks() {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pageData = [
             'header_title' => $user->student->pages->networks_header_title,
             'content_text' => $user->student->pages->networks_content_text,
@@ -244,7 +256,9 @@ class ManageController extends Controller
     }
 
     public function processManageNetworks(Request $request) {
-        $user = User::with('student')->where('id', Auth::user()->id)->firstOrFail();
+        $this->validateForm($request);
+
+        $user = User::where('id', Auth::user()->id)->firstOrFail();
         $pages= $user->student->pages;
         $pages->networks_header_title = $request->header_title;
         $pages->networks_content_text = $request->content_text;
@@ -269,27 +283,24 @@ class ManageController extends Controller
         return redirect()->route('networks', $user->student->slug);
     }
 
+    private function validateForm(Request $request) {
+        $this->validate($request, [
+            'content_color' => 'required|integer|min:1|max:7',
+            'content_image' => 'image|mimes:jpg,png,jpeg,gif|max:10240',
+            'content_layout' => 'required|integer|min:1|max:4',
+        ]);
+    }
+
     private function uploadImage(Request $request, User $user) {
-        try{
-            // Check if uploaded image is correct, and if the image name already exists
-            if($request->validate(['content_image' => 'image|mimes:jpg,png,jpeg,gif|max:10240',])) {
+        // Create directory if it does not already exist
+        Storage::makeDirectory('public/images/'. $user->student->slug);
 
-                // Create directory if it does not already exist
-                Storage::makeDirectory('public/images/'. $user->student->slug);
+        // Upload the image
+        $src = Storage::putFile('public/images/'. $user->student->slug, $request->content_image);
+        $src = str_replace('public', 'storage', $src);
+        ImageOptimizer::optimize($src);
 
-                // Upload the image
-                $src = Storage::putFile('public/images/'. $user->student->slug, $request->content_image);
-                $src = str_replace('public', 'storage', $src);
-
-                return $src;
-            } else {
-                // TODO: Return proper "validation" error
-                return false;
-            }
-        } catch (\Exception $e) {
-            // TODO: Return proper "validation" error (form is likely missing encoding)
-            return false;
-        }
+        return $src;
     }
 
     private function deleteImage($image) {
