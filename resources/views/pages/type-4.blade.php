@@ -8,7 +8,9 @@
             {!! $pageData['contentText'] !!}
         </div>
     </div>
-    <img src="{{ $pageData['contentImage'] }}" alt="" class="mt-2 w-full">
+    <div class="mt-2 w-full">
+        @include('components.modals.image', ['modalId' => 'imageModal', 'imageSrc' => $pageData['contentImage']])
+    </div>
 </div>
 
 @auth

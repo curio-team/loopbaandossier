@@ -20,6 +20,9 @@
             { name: 'about', groups: [ 'about' ] }
             ],
             removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Subscript,Superscript,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,Language,BidiRtl,Anchor,Image,Flash,PageBreak,Iframe,ShowBlocks,About,Table',
+            disallowedContent: 'img',
+            removePlugins: 'exportpdf',
+            height: '25em',
         });
         @endforeach
     }

@@ -54,7 +54,7 @@
 }
 
 .color-box-1 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-1-1) 0%,
             var(--color-1-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -78,7 +78,7 @@
 }
 
 .color-box-2 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-2-1) 0%,
             var(--color-2-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -102,7 +102,7 @@
 }
 
 .color-box-3 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-3-1) 0%,
             var(--color-3-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -126,7 +126,7 @@
 }
 
 .color-box-4 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-4-1) 0%,
             var(--color-4-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -150,7 +150,7 @@
 }
 
 .color-box-5 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-5-1) 0%,
             var(--color-5-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -174,7 +174,7 @@
 }
 
 .color-box-6 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-6-1) 0%,
             var(--color-6-1) calc(50% - 0.8px),
             var(--black-line) 50%,
@@ -198,7 +198,7 @@
 }
 
 .color-box-7 {
-    background: linear-gradient(to bottom right,
+    background: linear-gradient(to bottom,
             var(--color-7-1) 0%,
             var(--color-7-1) calc(50% - 0.8px),
             var(--black-line) 50%,
