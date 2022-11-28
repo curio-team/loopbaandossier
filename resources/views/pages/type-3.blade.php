@@ -11,7 +11,9 @@
     </div>
 </div>
 
-@if (Auth::user()->student->slug == $student->slug)
-    @include('components.edit-button')
-@endif
+@auth
+    @if (Auth::user()->student->slug == $student->slug)
+        @include('components.edit-button')
+    @endif
+@endauth
 @endsection

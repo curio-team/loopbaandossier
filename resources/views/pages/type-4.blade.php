@@ -11,7 +11,9 @@
     <img src="{{ $pageData['contentImage'] }}" alt="" class="mt-2 w-full">
 </div>
 
-@if (Auth::user()->student->slug == $student->slug)
-    @include('components.edit-button')
-@endif
+@auth
+    @if (Auth::user()->student->slug == $student->slug)
+        @include('components.edit-button')
+    @endif
+@endauth
 @endsection
