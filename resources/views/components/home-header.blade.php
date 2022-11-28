@@ -13,7 +13,7 @@
                 <a href="{{ route('login') }}">Login</a>
             </div>
         </div>
-        <div class="flex items-center justify-center h-80">
+        <div class="flex items-center justify-center h-80 header-title-1">
             <p class="text-7xl font-semibold">Curio Loopbaandossiers</p>
         </div>
     </div>
