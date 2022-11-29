@@ -49,6 +49,14 @@ class regenerate extends Command
         $adminUser->save();
 
         $password = Str::random(32);
+        $this->info('Teacher email: teacher@curio.nl');
+        $this->info('New Teacher Password: ' .$password. "\n");
+
+        $teacher = User::where('email', 'teacher@curio.nl')->first();
+        $teacher->password = Hash::make($password);
+        $teacher->save();
+
+        $password = Str::random(32);
         $this->info('User email: s.vanrosendaal@curio.nl');
         $this->info('New User Password: ' .$password);
 
