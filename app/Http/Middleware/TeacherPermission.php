@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminPermission
+class TeacherPermission
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->is_admin) {
+        if(Auth::user()->teacher) {
             return $next($request);
         } else {
             return redirect()->route('home');

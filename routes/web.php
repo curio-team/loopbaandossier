@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,12 @@ Route::get('/', [PageController::class, 'showHome'])->name('home');
 require __DIR__.'/auth.php';
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-    Route::get('/', [AdminController::class, 'showAdmin'])->name('admin');
+Route::group(['prefix' => 'docent', 'middleware' => ['auth', 'teacher']], function () {
+    Route::get('/', [TeacherController::class, 'showDashboard'])->name('docent_dashboard');
+});
+
+Route::group(['admin' => 'docent', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/', [AdminController::class, 'showDashboard'])->name('admin_dashboard');
 });
 
 Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'student']], function () {

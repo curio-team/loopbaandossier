@@ -42,7 +42,9 @@ class ConfirmablePasswordController extends Controller
         $user = Auth::user();
 
         if($user->is_admin){
-            return redirect()->route('admin');
+            return redirect()->route('admin_dashboard');
+        } elseif($user->teacher) {
+            return redirect()->route('teacher_dashboard');
         } else {
             return redirect()->route('main', [$user->student->slug]);
         }
