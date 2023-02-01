@@ -4,24 +4,13 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Student;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
  */
 class StudentFactory extends Factory
 {
-    /**
-     * Configure the model factory.
-     *
-     * @return $this
-     */
-    public function configure()
-    {
-        return $this->afterCreating(function (Student $student) {
-            $student->pages()->save(Page::factory()->makeOne());
-        });
-    }
-
     /**
      * Define the model's default state.
      *

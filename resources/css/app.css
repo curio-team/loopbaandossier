@@ -37,7 +37,7 @@
     font-weight: bold;
 }
 
-.nav-links a {
+.nav-links a, .nav-links button {
     @apply mx-3 text-gray-100;
 }
 
@@ -219,6 +219,14 @@
 
 .content-manage {
     background-color: var(--color-manage-2);
+}
+
+.header-admin {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.content-admin {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 [type=radio] {

@@ -19,9 +19,13 @@ class SchoolClassFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (SchoolClass $schoolClass) {
-            $schoolClass->students()->saveMany(StudentFactory::new()->count(5)->make([
+            $students = $schoolClass->students()->saveMany(StudentFactory::new()->count(5)->make([
                 'class_id' => $schoolClass->id,
             ]));
+
+            foreach ($students as $student){
+                $student->pages()->save(PageFactory::new()->create(['student_id' => $student->id]));
+            }
 
             $schoolClass->teachers()->saveMany(TeacherFactory::new()->count(1)->make());
         });

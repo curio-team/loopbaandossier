@@ -5,11 +5,13 @@ namespace Database\Seeders;
 use App\Models\SchoolClass;
 use App\Models\User;
 use App\Models\Student;
+use Database\Factories\StudentFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Database\Factories\TeacherFactory;
+use Database\Factories\PageFactory;
 
 class UserSeeder extends Seeder
 {
@@ -81,10 +83,13 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        $studentUser->student()->save(Student::factory()->make([
+        $student = $studentUser->student()->save(StudentFactory::new()->create([
             'class_id' => $classes->first()->id,
+            'slug' => Str::of($studentUser->name)->slug(),
             'created_at' => now(),
             'updated_at' => now(),
         ]));
+
+        $student->pages()->save(PageFactory::new()->create(['student_id' => $student->id]));
     }
 }

@@ -16,9 +16,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="content-{{ $pageColor }}">
-        <header>
-            @include('components.page-header')
-        </header>
+        @auth
+            @if (Auth::user()->is_admin)
+                @include('components.admin-header')
+            @endif
+        @endauth
+
+        @include('components.page-header')
 
         <main>
             @yield('content')

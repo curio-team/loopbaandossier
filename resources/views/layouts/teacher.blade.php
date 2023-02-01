@@ -22,7 +22,7 @@
         @endif
     @endauth
 
-    @include('components.manage-header')
+    @include('components.teacher-header')
 
     @if ($errors->any())
         <div class="mt-4 w-3/4 mx-auto flex justify-center">

@@ -23,11 +23,23 @@ require __DIR__.'/auth.php';
 
 
 Route::group(['prefix' => 'docent', 'middleware' => ['auth', 'teacher']], function () {
-    Route::get('/', [TeacherController::class, 'showDashboard'])->name('docent_dashboard');
+    Route::get('/', [TeacherController::class, 'showDashboard'])->name('teacher_dashboard');
+    Route::get('/klas/{classCode}', [TeacherController::class, 'showClass'])->name('teacher_class');
 });
 
-Route::group(['admin' => 'docent', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', [AdminController::class, 'showDashboard'])->name('admin_dashboard');
+    Route::get('/admins', [AdminController::class, 'manageAdmins'])->name('admin_manage_admins');
+    Route::post('/admins/{userId}/toggle', [AdminController::class, 'toggleAdmin'])->name('admin_toggle_admin');
+    Route::get('/docenten', [AdminController::class, 'manageTeachers'])->name('admin_manage_teachers');
+    Route::get('/klassen', [AdminController::class, 'manageClasses'])->name('admin_manage_classes');
+    Route::get('/klassen/{classCode}', [AdminController::class, 'manageStudents'])->name('admin_manage_students');
+    Route::get('/student/{studentId}/beheren', [AdminController::class, 'manageStudent'])->name('admin_manage_student');
+    Route::post('/student/{studentId}/beheren', [AdminController::class, 'processManageStudent'])->name('admin_process_manage_student');
+    Route::post('/student/{studentId}/toggle-active', [AdminController::class, 'toggleStudentActive'])->name('admin_toggle_student_active');
+    Route::get('/leeraar/{teacherId}/beheren', [AdminController::class, 'manageTeacher'])->name('admin_manage_teacher');
+    Route::post('/leeraar/{teacherId}/toggle-active', [AdminController::class, 'toggleTeacherActive'])->name('admin_toggle_teacher_active');
+    Route::post('/leeraar/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
 });
 
 Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'student']], function () {
@@ -45,7 +57,7 @@ Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'stu
     Route::post('/netwerken', [ManageController::class, 'processManageNetworks'])->name('process_manage_networks');
 });
 
-Route::group(['prefix' => '{studentSlug}'], function () {
+Route::group(['prefix' => '{studentSlug}', 'middleware' => ['active']], function () {
     Route::get('/', [PageController::class, 'showMain'])->name('main');
     Route::get('/voorstellen', [PageController::class, 'showIntroduction'])->name('introduction');
     Route::get('/kwaliteiten', [PageController::class, 'showQualities'])->name('qualities');

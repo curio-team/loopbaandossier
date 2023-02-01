@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Student;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TeacherPermission
+class ActiveStudent
 {
     /**
      * Handle an incoming request.
@@ -17,10 +18,13 @@ class TeacherPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->teacher || Auth::user()->is_admin) {
+        if (Student::where('slug', $request->route()->studentSlug)->first()->user->active ||
+            Auth::user()->is_admin ||
+            Auth::user()->teacher ||
+            Auth::user()->student->slug == $request->route()->studentSlug) {
             return $next($request);
-        } else {
-            return redirect()->route('home');
         }
+
+        abort(404);
     }
 }

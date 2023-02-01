@@ -14,9 +14,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-purple-500">
-        <header>
-            @include('components.home-header')
-        </header>
+        @auth
+            @if (Auth::user()->is_admin)
+                @include('components.admin-header')
+            @endif
+        @endauth
+
+        @include('components.home-header')
 
         <main>
             @yield('content')

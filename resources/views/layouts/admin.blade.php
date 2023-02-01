@@ -15,14 +15,8 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="content-manage">
-    @auth
-        @if (Auth::user()->is_admin)
-            @include('components.admin-header')
-        @endif
-    @endauth
-
-    @include('components.manage-header')
+<body class="content-admin">
+    @include('components.admin-header')
 
     @if ($errors->any())
         <div class="mt-4 w-3/4 mx-auto flex justify-center">
