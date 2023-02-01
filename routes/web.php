@@ -37,9 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/student/{studentId}/beheren', [AdminController::class, 'manageStudent'])->name('admin_manage_student');
     Route::post('/student/{studentId}/beheren', [AdminController::class, 'processManageStudent'])->name('admin_process_manage_student');
     Route::post('/student/{studentId}/toggle-active', [AdminController::class, 'toggleStudentActive'])->name('admin_toggle_student_active');
-    Route::get('/leeraar/{teacherId}/beheren', [AdminController::class, 'manageTeacher'])->name('admin_manage_teacher');
-    Route::post('/leeraar/{teacherId}/toggle-active', [AdminController::class, 'toggleTeacherActive'])->name('admin_toggle_teacher_active');
-    Route::post('/leeraar/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
+    Route::get('/leraar/{teacherId}/beheren', [AdminController::class, 'manageTeacher'])->name('admin_manage_teacher');
+    Route::post('/leraar/{teacherId}/toggle-active', [AdminController::class, 'toggleTeacherActive'])->name('admin_toggle_teacher_active');
+    Route::post('/leraar/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
 });
 
 Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'student']], function () {

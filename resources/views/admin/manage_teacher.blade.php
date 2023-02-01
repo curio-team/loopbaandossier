@@ -6,7 +6,7 @@
         <div class="my-2 mx-5">
             <div class="grid grid-cols-3 gap-4">
                 <a class="flex items-center" href="{{ route('admin_manage_teachers') }}">< Terug</a>
-                <h1 class="text-3xl font-bold text-center">Student Beheren - {{ $teacher->user->name }}</h1>
+                <h1 class="text-3xl font-bold text-center">Docent Beheren - {{ $teacher->user->name }}</h1>
                 <div></div>
             </div>
             <div class="grid grid-cols-6 gap-4">
