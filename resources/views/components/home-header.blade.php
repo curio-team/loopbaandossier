@@ -10,7 +10,15 @@
                     </div>
                 </a>
             <div class="flex items-center nav-links text-xl font-bold">
-                <a href="{{ route('login') }}">Login</a>
+                @guest
+                    <a href="{{ route('login') }}">Login</a>
+                @endguest
+                @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                @endauth
             </div>
         </div>
         <div class="flex items-center justify-center h-80 header-title-1">

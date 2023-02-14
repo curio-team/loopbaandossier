@@ -25,6 +25,8 @@ require __DIR__.'/auth.php';
 Route::group(['prefix' => 'docent', 'middleware' => ['auth', 'teacher']], function () {
     Route::get('/', [TeacherController::class, 'showDashboard'])->name('teacher_dashboard');
     Route::get('/klas/{classCode}', [TeacherController::class, 'showClass'])->name('teacher_class');
+    Route::post('/feedback/{studentId}', [TeacherController::class, 'feedbackStudent'])->name('teacher_feedback_student');
+    Route::post('/feedback/{studentId}/{page}', [TeacherController::class, 'processFeedback'])->name('teacher_process_feedback');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
@@ -37,9 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/student/{studentId}/beheren', [AdminController::class, 'manageStudent'])->name('admin_manage_student');
     Route::post('/student/{studentId}/beheren', [AdminController::class, 'processManageStudent'])->name('admin_process_manage_student');
     Route::post('/student/{studentId}/toggle-active', [AdminController::class, 'toggleStudentActive'])->name('admin_toggle_student_active');
-    Route::get('/leraar/{teacherId}/beheren', [AdminController::class, 'manageTeacher'])->name('admin_manage_teacher');
-    Route::post('/leraar/{teacherId}/toggle-active', [AdminController::class, 'toggleTeacherActive'])->name('admin_toggle_teacher_active');
-    Route::post('/leraar/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
+    Route::get('/docent/{teacherId}/beheren', [AdminController::class, 'manageTeacher'])->name('admin_manage_teacher');
+    Route::post('/docent/{teacherId}/toggle-active', [AdminController::class, 'toggleTeacherActive'])->name('admin_toggle_teacher_active');
+    Route::post('/docent/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
 });
 
 Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'student']], function () {

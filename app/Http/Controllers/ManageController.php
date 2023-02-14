@@ -32,7 +32,7 @@ class ManageController extends Controller
         $this->validateForm($request);
 
         $user = User::where('id', Auth::user()->id)->firstOrFail();
-        $pages= $user->student->pages;
+        $pages = $user->student->pages;
         $pages->introduction_header_title = $request->header_title;
         $pages->introduction_content_text = $request->content_text;
         $pages->introduction_content_color = $request->content_color;
@@ -52,6 +52,9 @@ class ManageController extends Controller
         $pages->introduction_content_image = $uploadedImage;
 
         $pages->save();
+
+        $user->student->requires_feedback = true;
+        $user->student->save();
 
         return redirect()->route('introduction', $user->student->slug);
     }
@@ -99,6 +102,9 @@ class ManageController extends Controller
 
         $pages->save();
 
+        $user->student->requires_feedback = true;
+        $user->student->save();
+
         return redirect()->route('qualities', $user->student->slug);
     }
 
@@ -144,6 +150,9 @@ class ManageController extends Controller
 
         $pages->save();
 
+        $user->student->requires_feedback = true;
+        $user->student->save();
+
         return redirect()->route('motives', $user->student->slug);
     }
 
@@ -188,6 +197,9 @@ class ManageController extends Controller
         $pages->exploration_content_image = $uploadedImage;
 
         $pages->save();
+
+        $user->student->requires_feedback = true;
+        $user->student->save();
 
         return redirect()->route('exploration', $user->student->slug);
     }
@@ -235,6 +247,9 @@ class ManageController extends Controller
 
         $pages->save();
 
+        $user->student->requires_feedback = true;
+        $user->student->save();
+
         return redirect()->route('experience', $user->student->slug);
     }
 
@@ -280,6 +295,9 @@ class ManageController extends Controller
 
         $pages->save();
 
+        $user->student->requires_feedback = true;
+        $user->student->save();
+
         return redirect()->route('networks', $user->student->slug);
     }
 
@@ -308,5 +326,5 @@ class ManageController extends Controller
         Storage::delete($src);
     }
 
-    
+
 }

@@ -20,4 +20,8 @@ class Student extends Model
     public function class(){
         return $this->belongsTo(SchoolClass::class, 'class_id', 'id');
     }
+
+    public function feedback(){
+        return $this->hasMany(Feedback::class);
+    }
 }

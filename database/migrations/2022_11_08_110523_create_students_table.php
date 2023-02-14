@@ -20,12 +20,13 @@ return new class extends Migration
             $table->string('student_number')->unique();
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
+            $table->boolean('requires_feedback')->default(false);
             $table->timestamps();
-            
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-    
+
     /**
     * Reverse the migrations.
     *
@@ -36,7 +37,7 @@ return new class extends Migration
         Schema::table('students', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
-        
+
         Schema::dropIfExists('students');
     }
 };

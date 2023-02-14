@@ -13,6 +13,8 @@
                         <tr>
                             <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Student</th>
                             <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Laatst bewerkt</th>
+                            <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">Nagekeken</th>
+
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-slate-800">
@@ -23,6 +25,14 @@
                                 </td>
                                 <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                                     {{ date_format($student->updated_at, 'j F Y - H:i') }}
+                                </td>
+                                <td>
+                                    @if($student->requires_feedback == true)
+                                        <form action="{{ route('teacher_feedback_student', $student->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="text-center shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-check"></i> Nagekeken</button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
