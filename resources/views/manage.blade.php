@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex justify-center">
-    <div class="bg-white bg-opacity-80 min-h-screen pt-6 m-5 rounded-md w-3/4">
+    <div class="bg-white bg-opacity-80 py-6 m-5 rounded-md w-3/4">
         <div class="my-2 mx-5">
             <form action="#" method="POST" enctype="multipart/form-data" class="w-full max-w-7xl">
                 @csrf
@@ -50,38 +50,140 @@
 
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/5">
-                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="content_text">
-                            Pagina kleur:
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="header_color">
+                            Pagina kop kleur:
                         </label>
                     </div>
-                    <div class="md:w-4/5 flex">
+                    <div class="md:w-4/5 grid grid-cols-5 gap-3 justify-items-center py-4 border-2 border-black">
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="1" {{ ($pageData['header_color'] == 1) ? 'checked' : '' }}>
+                            <div class="color-1"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="2" {{ ($pageData['header_color'] == 2) ? 'checked' : '' }}>
+                            <div class="color-2"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="3" {{ ($pageData['header_color'] == 3) ? 'checked' : '' }}>
+                            <div class="color-3"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="4" {{ ($pageData['header_color'] == 4) ? 'checked' : '' }}>
+                            <div class="color-4"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="5" {{ ($pageData['header_color'] == 5) ? 'checked' : '' }}>
+                            <div class="color-5"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="6" {{ ($pageData['header_color'] == 6) ? 'checked' : '' }}>
+                            <div class="color-6"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="7" {{ ($pageData['header_color'] == 7) ? 'checked' : '' }}>
+                            <div class="color-7"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="8" {{ ($pageData['header_color'] == 8) ? 'checked' : '' }}>
+                            <div class="color-8"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="9" {{ ($pageData['header_color'] == 9) ? 'checked' : '' }}>
+                            <div class="color-9"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="10" {{ ($pageData['header_color'] == 10) ? 'checked' : '' }}>
+                            <div class="color-10"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="11" {{ ($pageData['header_color'] == 11) ? 'checked' : '' }}>
+                            <div class="color-11"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="12" {{ ($pageData['header_color'] == 12) ? 'checked' : '' }}>
+                            <div class="color-12"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="13" {{ ($pageData['header_color'] == 13) ? 'checked' : '' }}>
+                            <div class="color-13"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="14" {{ ($pageData['header_color'] == 14) ? 'checked' : '' }}>
+                            <div class="color-14"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="header_color" value="15" {{ ($pageData['header_color'] == 15) ? 'checked' : '' }}>
+                            <div class="color-15"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/5">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="content_color">
+                            Pagina inhoud kleur:
+                        </label>
+                    </div>
+                    <div class="md:w-4/5 grid grid-cols-5 gap-3 justify-items-center py-4 border-2 border-black">
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="1" {{ ($pageData['content_color'] == 1) ? 'checked' : '' }}>
-                            <div class="color-box-1"></div>
+                            <div class="color-1"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="2" {{ ($pageData['content_color'] == 2) ? 'checked' : '' }}>
-                            <div class="color-box-2"></div>
+                            <div class="color-2"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="3" {{ ($pageData['content_color'] == 3) ? 'checked' : '' }}>
-                            <div class="color-box-3"></div>
+                            <div class="color-3"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="4" {{ ($pageData['content_color'] == 4) ? 'checked' : '' }}>
-                            <div class="color-box-4"></div>
+                            <div class="color-4"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="5" {{ ($pageData['content_color'] == 5) ? 'checked' : '' }}>
-                            <div class="color-box-5"></div>
+                            <div class="color-5"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="6" {{ ($pageData['content_color'] == 6) ? 'checked' : '' }}>
-                            <div class="color-box-6"></div>
+                            <div class="color-6"></div>
                         </label>
                         <label class="mr-2">
                             <input type="radio" name="content_color" value="7" {{ ($pageData['content_color'] == 7) ? 'checked' : '' }}>
-                            <div class="color-box-7"></div>
+                            <div class="color-7"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="8" {{ ($pageData['content_color'] == 8) ? 'checked' : '' }}>
+                            <div class="color-8"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="9" {{ ($pageData['content_color'] == 9) ? 'checked' : '' }}>
+                            <div class="color-9"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="10" {{ ($pageData['content_color'] == 10) ? 'checked' : '' }}>
+                            <div class="color-10"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="11" {{ ($pageData['content_color'] == 11) ? 'checked' : '' }}>
+                            <div class="color-11"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="12" {{ ($pageData['content_color'] == 12) ? 'checked' : '' }}>
+                            <div class="color-12"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="13" {{ ($pageData['content_color'] == 13) ? 'checked' : '' }}>
+                            <div class="color-13"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="14" {{ ($pageData['content_color'] == 14) ? 'checked' : '' }}>
+                            <div class="color-14"></div>
+                        </label>
+                        <label class="mr-2">
+                            <input type="radio" name="content_color" value="15" {{ ($pageData['content_color'] == 15) ? 'checked' : '' }}>
+                            <div class="color-15"></div>
                         </label>
                     </div>
                 </div>
@@ -124,7 +226,39 @@
             </form>
         </div>
     </div>
+
+
 </div>
+
+@if($student->feedback->count() > 0)
+    <div class="flex justify-center">
+        <div class="bg-white bg-opacity-80 py-6 m-5 rounded-md w-3/4">
+            <div class="w-full max-w-7xl md:flex md:flex-col md:items-center pr-12 mb-6 mx-6">
+                <label class="block text-gray-500 font-bold text-3xl" for="content_text">
+                    Feedback:
+                </label>
+                @foreach ($student->feedback as $feedback)
+                    <div class="border-b-2 border-gray-300 py-2 mt-4 w-full">
+                        <p class="font-bold">{{ $feedback->teacher->user->name }} ({{ $feedback->created_at->format('d-m-Y H:i') }})</p>
+                        <div class="my-2 flex">
+                            @if ($feedback->confirmed)
+                                <p class="text-green-500"><i class="fa fa-check"></i> Verwerkt</p>
+                            @else
+                                <label class="text-red-500"><i class="fa fa-times"></i> Nog niet verwerkt -</label>
+                                <form action="{{ route('process_feedback', ['studentSlug' => $student->slug, 'feedbackId' => $feedback->id]) }}" method="post">
+                                    @csrf
+                                    <button class="shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 ml-2 rounded" type="submit"><i class="fa fa-check"></i> Gedaan</button>
+                                </form>
+                            @endif
+                        </div>
+                        <p>{{ $feedback->feedback }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif
+
 <script type="application/javascript">
     image.onchange = evt => {
         const [file] = image.files

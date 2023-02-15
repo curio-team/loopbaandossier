@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'student' => \App\Http\Middleware\StudentPermission::class,
         'teacher' => \App\Http\Middleware\TeacherPermission::class,
         'active' => \App\Http\Middleware\ActiveStudent::class,
+        'student.exists' => \App\Http\Middleware\StudentExists::class,
     ];
 }

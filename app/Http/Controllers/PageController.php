@@ -10,16 +10,31 @@ use App\Models\Student;
 class PageController extends Controller
 {
     public function showHome() {
+        if(auth()->check()) {
+            if(auth()->user()->is_admin) {
+                return redirect()->route('admin_dashboard', ['teacherSlug' => auth()->user()->teacher->slug]);
+            }
+
+            if(auth()->user()->teacher) {
+                return redirect()->route('teacher_dashboard', ['teacherSlug' => auth()->user()->teacher->slug]);
+            }
+
+            if(auth()->user()->student) {
+                return redirect()->route('student_main', ['studentSlug' => auth()->user()->student->slug]);
+            }
+        }
         return view('home');
     }
 
     public function showMain($studentSlug) {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->main_header_color;
         $pageColor = $student->pages->main_content_color;
 
         return view('main', [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
         ]);
     }
@@ -27,6 +42,7 @@ class PageController extends Controller
     public function showIntroduction($studentSlug) {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->introduction_header_color;
         $pageColor = $student->pages->introduction_content_color;
         $pageData = [
             'headerTitle' => $student->pages->introduction_header_title ? $student->pages->introduction_header_title : 'Dit ben ik!',
@@ -38,6 +54,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->introduction_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,
@@ -48,6 +65,7 @@ class PageController extends Controller
     {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->qualities_header_color;
         $pageColor = $student->pages->qualities_content_color;
         $pageData = [
             'headerTitle' => $student->pages->qualities_header_title ? $student->pages->qualities_header_title : 'Dit zijn mijn kwaliteiten!',
@@ -59,6 +77,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->qualities_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,
@@ -69,6 +88,7 @@ class PageController extends Controller
     {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->motives_header_color;
         $pageColor = $student->pages->motives_content_color;
         $pageData = [
             'headerTitle' => $student->pages->motives_header_title ? $student->pages->motives_header_title : 'Hierdoor raak ik gemotiveerd!',
@@ -80,6 +100,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->motives_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,
@@ -90,6 +111,7 @@ class PageController extends Controller
     {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->exploration_header_color;
         $pageColor = $student->pages->exploration_content_color;
         $pageData = [
             'headerTitle' => $student->pages->exploration_header_title ? $student->pages->exploration_header_title : 'Dit is mijn onderzoek!',
@@ -101,6 +123,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->exploration_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,
@@ -111,6 +134,7 @@ class PageController extends Controller
     {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->experience_header_color;
         $pageColor = $student->pages->experience_content_color;
         $pageData = [
             'headerTitle' => $student->pages->experience_header_title ? $student->pages->experience_header_title : 'Hier komt mijn ervaring vandaan!',
@@ -122,6 +146,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->experience_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,
@@ -132,6 +157,7 @@ class PageController extends Controller
     {
         $student = Student::where('slug', $studentSlug)->first();
 
+        $headerColor = $student->pages->networks_header_color;
         $pageColor = $student->pages->networks_content_color;
         $pageData = [
             'headerTitle' => $student->pages->networks_header_title ? $student->pages->networks_header_title : 'Deze mensen en bedrijven kennen mij!',
@@ -143,6 +169,7 @@ class PageController extends Controller
 
         return view('pages.type-'.$student->pages->networks_content_layout, [
             'student' => $student,
+            'headerColor' => $headerColor,
             'pageColor' => $pageColor,
             'pageData' => $pageData,
             'feedback' => $feedback,

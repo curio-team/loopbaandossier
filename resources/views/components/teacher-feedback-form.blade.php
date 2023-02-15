@@ -32,15 +32,15 @@
                                 </form>
 
                                 <div class="mt-6">
-                                    @foreach ($feedback as $singleFeedback)
+                                    @foreach ($student->feedback as $feedback)
                                         <div class="border-b-2 border-gray-300 py-2 mt-4">
-                                            <p class="font-bold">{{ $singleFeedback->teacher->user->name }} ({{ $singleFeedback->created_at->format('d-m-Y H:i') }})</p>
-                                            @if ($singleFeedback->confirmed)
+                                            <p class="font-bold">{{ $feedback->teacher->user->name }} ({{ $feedback->created_at->format('d-m-Y H:i') }})</p>
+                                            @if ($feedback->confirmed)
                                                 <p class="text-green-500"><i class="fa fa-check"></i> Verwerkt</p>
                                             @else
                                                 <p class="text-red-500"><i class="fa fa-times"></i> Nog niet verwerkt</p>
                                             @endif
-                                            <p>{{ $singleFeedback->feedback }}</p>
+                                            <p>{{ $feedback->feedback }}</p>
                                         </div>
                                     @endforeach
                                 </div>

@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        @include('layouts.fonts')
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -17,6 +17,10 @@
         @auth
             @if (Auth::user()->is_admin)
                 @include('components.admin-header')
+            @endif
+
+            @if (Auth::user()->teacher)
+                @include('components.teacher-header')
             @endif
         @endauth
 

@@ -11,12 +11,12 @@
                 </a>
             <div class="flex items-center nav-links text-xl font-bold">
                 @guest
-                    <a href="{{ route('login') }}">Login</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('login') }}">Login</a>
                 @endguest
                 @auth
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit">Logout</button>
+                        <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
                     </form>
                 @endauth
             </div>

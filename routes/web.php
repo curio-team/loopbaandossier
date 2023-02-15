@@ -57,9 +57,10 @@ Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'stu
     Route::post('/loopbaansturing', [ManageController::class, 'processManageExperience'])->name('process_manage_experience');
     Route::get('/netwerken', [ManageController::class, 'manageNetworks'])->name('manage_networks');
     Route::post('/netwerken', [ManageController::class, 'processManageNetworks'])->name('process_manage_networks');
+    Route::post('/feedback/verwerken/{feedbackId}', [ManageController::class, 'processFeedback'])->name('process_feedback');
 });
 
-Route::group(['prefix' => '{studentSlug}', 'middleware' => ['active']], function () {
+Route::group(['prefix' => '{studentSlug}', 'middleware' => ['student.exists', 'active']], function () {
     Route::get('/', [PageController::class, 'showMain'])->name('main');
     Route::get('/voorstellen', [PageController::class, 'showIntroduction'])->name('introduction');
     Route::get('/kwaliteiten', [PageController::class, 'showQualities'])->name('qualities');

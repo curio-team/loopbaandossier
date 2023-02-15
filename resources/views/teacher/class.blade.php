@@ -30,8 +30,10 @@
                                     @if($student->requires_feedback == true)
                                         <form action="{{ route('teacher_feedback_student', $student->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="text-center shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-check"></i> Nagekeken</button>
+                                            <button type="submit" class="text-center shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-check"></i> Bevestigen</button>
                                         </form>
+                                    @else
+                                    <button disabled class="text-center shadow bg-gray-200 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-check"></i> Nagekeken</button>
                                     @endif
                                 </td>
                             </tr>

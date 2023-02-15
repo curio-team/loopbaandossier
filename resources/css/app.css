@@ -5,31 +5,51 @@
 @tailwind utilities;
 
 :root {
-    --color-1-1: rgba(250, 204, 21, 1);
-    --color-1-2: rgba(168, 85, 247, 1);
+    --color-curio-yellow: rgba(255, 204, 0, 1);
+    --color-curio-pink: rgba(249, 174, 205, 1);
+    --color-curio-lavender: rgba(190, 176, 255, 1);
+    --color-curio-sky-blue: rgba(86, 221, 240, 1);
+    --color-curio-lime: rgba(192, 237, 12, 1);
+    --color-curio-red: rgba(252, 50, 50, 1);
+    --color-curio-fuchsia: rgba(250, 50, 156, 1);
+    --color-curio-purple: rgba(149, 53, 249, 1);
+    --color-curio-blue: rgba(0, 80, 255);
+    --color-curio-green: rgba(42, 221, 93, 1);
+    --color-curio-brown: rgba(102, 4, 5, 1);
+    --color-curio-plum: rgba(120, 3, 74, 1);
+    --color-curio-violet: rgba(105, 25, 124, 1);
+    --color-curio-navy: rgba(3, 53, 124, 1);
+    --color-curio-pine: rgba(1, 76, 53, 1);
 
-    --color-2-1: rgba(74, 222, 128, 1);
-    --color-2-2: rgba(249, 168, 212, 1);
+    --color-1-1: var(--color-curio-yellow);
+    --color-1-2: var(--color-curio-purple);
 
-    --color-3-1: rgba(30, 64, 175, 1);
-    --color-3-2: rgba(192, 36, 211, 1);
+    --color-2-1: var(--color-curio-green);
+    --color-2-2: var(--color-curio-pink);
 
-    --color-4-1: rgba(153, 27, 27, 1);
-    --color-4-2: rgba(125, 211, 252, 1);
+    --color-3-1: var(--color-curio-navy);
+    --color-3-2: var(--color-curio-violet);
 
-    --color-5-1: rgba(168, 85, 247, 1);
-    --color-5-2: rgba(236, 72, 153, 1);
+    --color-4-1: var(--color-curio-brown);
+    --color-4-2: var(--color-curio-sky-blue);
 
-    --color-6-1: rgba(190, 24, 93, 1);
-    --color-6-2: rgba(29, 78, 216, 1);
+    --color-5-1: var(--color-curio-purple);
+    --color-5-2: var(--color-curio-pink);
 
-    --color-7-1: rgba(220, 38, 38, 1);
-    --color-7-2: rgba(244, 114, 182, 1);
+    --color-6-1: var(--color-curio-fuchsia);
+    --color-6-2: var(--color-curio-blue);
 
-    --color-manage-1: rgba(96, 165, 250, 1);
-    --color-manage-2: rgba(219, 234, 254, 1);
+    --color-7-1: var(--color-curio-red);
+    --color-7-2: var(--color-curio-pink);
+
+    --color-manage-1: var(--color-curio-lavender);
+    --color-manage-2: var(--color-curio-sky-blue);
 
     --black-line: rgba(0, 0, 0, 1);
+}
+
+html {
+    font-family: Fellix,"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .nav-active {
@@ -53,160 +73,229 @@
     background-color: var(--color-1-2);
 }
 
-.color-box-1 {
-    background: linear-gradient(to bottom,
-            var(--color-1-1) 0%,
-            var(--color-1-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-1-2) calc(50% + 0.8px),
-            var(--color-1-2) 100%);
+.color-1 {
+    background-color: var(--color-curio-yellow);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-2 {
-    background-color: var(--color-2-1);
+.color-text-1 {
+    color: var(--color-curio-yellow);
 }
 
-.header-title-2 {
-    color: var(--color-2-2);
+.color-background-1 {
+    background-color: var(--color-curio-yellow);
 }
 
-.content-2 {
-    background-color: var(--color-2-2);
-}
-
-.color-box-2 {
-    background: linear-gradient(to bottom,
-            var(--color-2-1) 0%,
-            var(--color-2-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-2-2) calc(50% + 0.8px),
-            var(--color-2-2) 100%);
+.color-2 {
+    background-color: var(--color-curio-pink);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-3 {
-    background-color: var(--color-3-1);
+.color-text-2 {
+    color: var(--color-curio-pink);
 }
 
-.header-title-3 {
-    color: var(--color-3-2);
+.color-background-2 {
+    background-color: var(--color-curio-pink);
 }
 
-.content-3 {
-    background-color: var(--color-3-2);
-}
-
-.color-box-3 {
-    background: linear-gradient(to bottom,
-            var(--color-3-1) 0%,
-            var(--color-3-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-3-2) calc(50% + 0.8px),
-            var(--color-3-2) 100%);
+.color-3 {
+    background-color: var(--color-curio-lavender);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-4 {
-    background-color: var(--color-4-1);
+.color-text-3 {
+    color: var(--color-curio-lavender);
 }
 
-.header-title-4 {
-    color: var(--color-4-2);
+.color-background-3 {
+    background-color: var(--color-curio-lavender);
 }
 
-.content-4 {
-    background-color: var(--color-4-2);
-}
-
-.color-box-4 {
-    background: linear-gradient(to bottom,
-            var(--color-4-1) 0%,
-            var(--color-4-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-4-2) calc(50% + 0.8px),
-            var(--color-4-2) 100%);
+.color-4 {
+    background-color: var(--color-curio-sky-blue);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-5 {
-    background-color: var(--color-5-1);
+.color-text-4 {
+    color: var(--color-curio-sky-blue);
 }
 
-.header-title-5 {
-    color: var(--color-5-2);
+.color-background-4 {
+    background-color: var(--color-curio-sky-blue);
 }
 
-.content-5 {
-    background-color: var(--color-5-2);
-}
-
-.color-box-5 {
-    background: linear-gradient(to bottom,
-            var(--color-5-1) 0%,
-            var(--color-5-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-5-2) calc(50% + 0.8px),
-            var(--color-5-2) 100%);
+.color-5 {
+    background-color: var(--color-curio-lime);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-6 {
-    background-color: var(--color-6-1);
+.color-text-5 {
+    color: var(--color-curio-lime);
 }
 
-.header-title-6 {
-    color: var(--color-6-2);
+.color-background-5 {
+    background-color: var(--color-curio-lime);
 }
 
-.content-6 {
-    background-color: var(--color-6-2);
-}
-
-.color-box-6 {
-    background: linear-gradient(to bottom,
-            var(--color-6-1) 0%,
-            var(--color-6-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-6-2) calc(50% + 0.8px),
-            var(--color-6-2) 100%);
+.color-6 {
+    background-color: var(--color-curio-red);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
 }
 
-.header-7 {
-    background-color: var(--color-7-1);
+.color-text-6 {
+    color: var(--color-curio-red);
 }
 
-.header-title-7 {
-    color: var(--color-7-2);
+.color-background-6 {
+    background-color: var(--color-curio-red);
 }
 
-.content-7 {
-    background-color: var(--color-7-2);
-}
-
-.color-box-7 {
-    background: linear-gradient(to bottom,
-            var(--color-7-1) 0%,
-            var(--color-7-1) calc(50% - 0.8px),
-            var(--black-line) 50%,
-            var(--color-7-2) calc(50% + 0.8px),
-            var(--color-7-2) 100%);
+.color-7 {
+    background-color: var(--color-curio-fuchsia);
     height: 50px;
     width: 50px;
-    border: black solid 1px;
+    border-radius: 100%;
+}
+
+.color-text-7 {
+    color: var(--color-curio-fuchsia);
+}
+
+.color-background-7 {
+    background-color: var(--color-curio-fuchsia);
+}
+
+.color-8 {
+    background-color: var(--color-curio-purple);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-8 {
+    color: var(--color-curio-purple);
+}
+
+.color-background-8 {
+    background-color: var(--color-curio-purple);
+}
+
+.color-9 {
+    background-color: var(--color-curio-blue);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-9 {
+    color: var(--color-curio-blue);
+}
+
+.color-background-9 {
+    background-color: var(--color-curio-blue);
+}
+
+.color-10 {
+    background-color: var(--color-curio-green);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-10 {
+    color: var(--color-curio-green);
+}
+
+.color-background-10 {
+    background-color: var(--color-curio-green);
+}
+
+.color-11 {
+    background-color: var(--color-curio-brown);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-11 {
+    color: var(--color-curio-brown);
+}
+
+.color-background-11 {
+    background-color: var(--color-curio-brown);
+}
+
+.color-12 {
+    background-color: var(--color-curio-plum);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-12 {
+    color: var(--color-curio-plum);
+}
+
+.color-background-12 {
+    background-color: var(--color-curio-plum);
+}
+
+.color-13 {
+    background-color: var(--color-curio-violet);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-13 {
+    color: var(--color-curio-violet);
+}
+
+.color-background-13 {
+    background-color: var(--color-curio-violet);
+}
+
+.color-14 {
+    background-color: var(--color-curio-navy);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-14 {
+    color: var(--color-curio-navy);
+}
+
+.color-background-14 {
+    background-color: var(--color-curio-navy);
+}
+
+.color-15 {
+    background-color: var(--color-curio-pine);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.color-text-15 {
+    color: var(--color-curio-pine);
+}
+
+.color-background-15 {
+    background-color: var(--color-curio-pine);
 }
 
 .header-manage {
