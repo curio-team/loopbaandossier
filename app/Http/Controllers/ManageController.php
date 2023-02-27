@@ -327,7 +327,8 @@ class ManageController extends Controller
         // Upload the image
         $src = Storage::putFile('public/images/'. $user->student->slug, $request->content_image);
         $src = str_replace('public', 'storage', $src);
-        ImageOptimizer::optimize($src);
+
+        //ImageOptimizer::optimize($src);
 
         return $src;
     }
