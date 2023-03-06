@@ -12,11 +12,11 @@ class PageController extends Controller
     public function showHome() {
         if(auth()->check()) {
             if(auth()->user()->is_admin) {
-                return redirect()->route('admin_dashboard', ['teacherSlug' => auth()->user()->teacher->slug]);
+                return redirect()->route('admin_dashboard');
             }
 
             if(auth()->user()->teacher) {
-                return redirect()->route('teacher_dashboard', ['teacherSlug' => auth()->user()->teacher->slug]);
+                return redirect()->route('teacher_dashboard');
             }
 
             if(auth()->user()->student) {
