@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Svg\Gradient\Stop;
 
 class ManageController extends Controller
 {
@@ -321,13 +323,16 @@ class ManageController extends Controller
     }
 
     private function uploadImage(Request $request, User $user) {
-        // Create directory if it does not already exist
+        // Create directory if it does not already exist and rewrite
         Storage::makeDirectory('public/images/'. $user->student->slug);
 
         // Upload the image
         $src = Storage::putFile('public/images/'. $user->student->slug, $request->content_image);
         $src = str_replace('public', 'storage', $src);
+        chmod($src, 0755);
+        chmod(storage_path('app/public/images/'. $user->student->slug), 0755);
 
+        // TODO: Fix ImageOptimizer bug. Can't find the uploaded image anymore.
         //ImageOptimizer::optimize($src);
 
         return $src;
