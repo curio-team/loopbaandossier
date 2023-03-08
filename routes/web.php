@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'showHome'])->name('home');
-Route::get('test/{studentSlug}', [ManageController::class, 'test'])->name('test');
 
 require __DIR__.'/auth.php';
 
