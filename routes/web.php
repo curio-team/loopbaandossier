@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'showHome'])->name('home');
+Route::get('test/{studentSlug}', [ManageController::class, 'test'])->name('test');
 
 require __DIR__.'/auth.php';
 
@@ -58,6 +59,7 @@ Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'stu
     Route::get('/netwerken', [ManageController::class, 'manageNetworks'])->name('manage_networks');
     Route::post('/netwerken', [ManageController::class, 'processManageNetworks'])->name('process_manage_networks');
     Route::post('/feedback/verwerken/{feedbackId}', [ManageController::class, 'processFeedback'])->name('process_feedback');
+    Route::get('/exporteren', [ManageController::class, 'exportToPDF'])->name('export');
 });
 
 Route::group(['prefix' => '{studentSlug}', 'middleware' => ['student.exists', 'active']], function () {

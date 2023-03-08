@@ -15,10 +15,6 @@
                 <a href="{{ route('admin_manage_classes') }}" class="text-center shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-4 px-6 rounded">
                     Klassen Beheren
                 </a>
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="text-center shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-4 px-6 rounded">Uitloggen</button>
-                </form>
             </div>
         </div>
     </div>

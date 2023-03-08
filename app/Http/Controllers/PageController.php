@@ -20,7 +20,7 @@ class PageController extends Controller
             }
 
             if(auth()->user()->student) {
-                return redirect()->route('student_main', ['studentSlug' => auth()->user()->student->slug]);
+                return redirect()->route('main', ['studentSlug' => auth()->user()->student->slug]);
             }
         }
         return view('home');

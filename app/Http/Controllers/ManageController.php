@@ -355,4 +355,35 @@ class ManageController extends Controller
         $student->save();
     }
 
+    public function exportToPDF($studentSlug) {
+        $student = Student::where('slug', $studentSlug)->firstOrFail();
+
+        $pdf = PDF::loadView('pdf.export', [
+            'student' => $student,
+        ])->setPaper('a4', 'portrait');
+
+        $pdf->setOptions([
+            'isHtml5ParserEnabled' => true,
+            'isRemoteEnabled' => true,
+            'pdfBackend' => 'CPDF',
+            'chroot' => [
+                'resources/views/',
+                storage_path('fonts'),
+            ],
+            'fontDir' => storage_path('fonts'),
+        ]);
+
+        return $pdf->stream('loopbaandossier-'.$student->slug.'.pdf');
+
+
+    }
+
+    public function test($studentSlug) {
+        $student = Student::where('slug', $studentSlug)->firstOrFail();
+
+        return view('pdf.export', ['student' => $student]);
+
+
+    }
+
 }
