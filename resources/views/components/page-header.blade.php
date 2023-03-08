@@ -12,8 +12,8 @@
             <div class="flex items-center nav-links md:text-base sm:text-sm font-bold">
                 <a class="text-white hover:text-gray-200" href="{{ route('main', $student->slug) }}" class="{{ (request()->is('main')) ? 'nav-active' : '' }}">Homepagina</a>
                 @auth
-                    @if(Auth::user()->student || Auth::user()->teacher || Auth::user()->admin)
-                        @if($student->id == Auth::user()->student->id || Auth::user()->teacher || Auth::user()->admin)
+                    @if(Auth::user()->student || Auth::user()->teacher || Auth::user()->is_admin)
+                        @if($student->id == Auth::user()->student->id || Auth::user()->teacher || Auth::user()->is_admin)
                             <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen {{ $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() .')' : '' }}</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten {{ $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() .')' : '' }}</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven {{ $student->feedback->where('page', 'motives')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'motives')->where('confirmed', false)->count() .')' : '' }}</a>
