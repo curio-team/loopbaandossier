@@ -72,7 +72,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->introduction_header_title }}</h1>
                             @if($student->pages->introduction_content_image)
-                                <img src="{{ asset($student->pages->introduction_content_image) }}" class="image-right">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->introduction_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->introduction_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-right">
                             @endif
                             {!! $student->pages->introduction_content_text !!}
                         </div>
@@ -86,7 +92,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->qualities_header_title }}</h1>
                             @if($student->pages->qualities_content_image)
-                                <img src="{{ asset($student->pages->qualities_content_image) }}" class="image-left">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->qualities_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->qualities_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-left">
                             @endif
                             {!! $student->pages->qualities_content_text !!}
                         </div>
@@ -100,7 +112,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->motives_header_title }}</h1>
                             @if($student->pages->motives_content_image)
-                                <img src="{{ asset($student->pages->motives_content_image) }}" class="image-right">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->motives_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->motives_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-right">
                             @endif
                             {!! $student->pages->motives_content_text !!}
                         </div>
@@ -114,7 +132,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->exploration_header_title }}</h1>
                             @if($student->pages->exploration_content_image)
-                                <img src="{{ asset($student->pages->exploration_content_image) }}" class="image-left">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->exploration_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->exploration_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-left">
                             @endif
                             {!! $student->pages->exploration_content_text !!}
                         </div>
@@ -128,7 +152,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->experience_header_title }}</h1>
                             @if($student->pages->experience_content_image)
-                                <img src="{{ asset($student->pages->experience_content_image) }}" class="image-right">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->experience_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->experience_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-right">
                             @endif
                             {!! $student->pages->experience_content_text !!}
                         </div>
@@ -142,7 +172,13 @@
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
                             <h1>{{ $student->pages->networks_header_title }}</h1>
                             @if($student->pages->networks_content_image)
-                                <img src="{{ asset($student->pages->networks_content_image) }}" class="image-left">
+                                @php
+                                    // get image filetype
+                                    $filetype = pathinfo($student->pages->networks_content_image, PATHINFO_EXTENSION);
+                                    // base64 encode image
+                                    $imageData = base64_encode(file_get_contents(asset($student->pages->networks_content_image)));
+                                @endphp
+                                <img src="data:image/{{ $filetype }};base64,{{ $imageData }}" class="image-left">
                             @endif
                             {!! $student->pages->networks_content_text !!}
                         </div>
