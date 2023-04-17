@@ -30,12 +30,16 @@ class regenerateTeacher extends Command
      */
     public function handle()
     {
-        $password = Str::random(32);
-        $this->info('Teacher email: teacher@curio.nl');
-        $this->info('New Teacher Password: ' . $password . "\n");
+        if (App::environment(['local', 'staging'])) {
+            $password = Str::random(32);
+            $this->info('Teacher email: teacher@curio.nl');
+            $this->info('New Teacher Password: ' . $password . "\n");
 
-        $user = User::where('email', 'teacher@curio.nl')->first();
-        $user->password = Hash::make($password);
-        $user->save();
+            $user = User::where('email', 'teacher@curio.nl')->first();
+            $user->password = Hash::make($password);
+            $user->save();
+        } else {
+            $this->error('This command can only be run in a local or staging environment');
+        }
     }
 }
