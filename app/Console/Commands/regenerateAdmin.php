@@ -41,7 +41,7 @@ class regenerateAdmin extends Command
      */
     public function handle()
     {
-        if (App::environment('local')) {
+        if (App::environment(['local', 'staging'])) {
             $password = Str::random(32);
             $this->info('Admin email: admin@curio.nl');
             $this->info('New Admin Password: ' . $password . "\n");
@@ -50,7 +50,7 @@ class regenerateAdmin extends Command
             $adminUser->password = Hash::make($password);
             $adminUser->save();
         } else {
-            $this->error('This command can only be run in local environment');
+            $this->error('This command can only be run in a local or staging environment');
         }
     }
 }
