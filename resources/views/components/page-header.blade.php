@@ -4,7 +4,7 @@
                 <a href="{{ route('home') }}" class="font-semibold leading-tight">
                     <div class="flex items-center">
                         <div class="w-20">
-                                <image src="{{asset('assets/images/curio-02-wit-logo-rgb.png')}}" alt="Curio Logo">
+                            <image src="{{asset('assets/images/curio-02-wit-logo-rgb.png')}}" alt="Curio Logo">
                         </div>
                         <p class="text-white mx-3">{{__('Loopbaandossier Student')}}</p>
                     </div>
@@ -21,7 +21,28 @@
                             <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie {{ $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() .')' : '' }}</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('export', $student->slug) }}">PDF</a>
+                            <div class="group">
+                                <button class="text-white hover:text-gray-200 hover:nav-dropdown:block">Menu <i class="fa fa-chevron-down"></i></button>
+                                <div class="hidden group-hover:block relative w-0 h-0" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <div class="nav-dropdown-links absolute origin-top-right w-28 z-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none group-hover:block" role="none">
+                                        <a class="text-black" href="{{ route('export', $student->slug) }}">PDF Export</a>
+                                        <button id="confirm-online-modal-button" type="button">
+                                            <span class="hover:text-gray-400">Online</span>
+                                            @if(Auth::user()->student->online)
+                                                <i class="fa fa-toggle-on text-xl text-green-600 inline-block align-[-3px]"></i>
+                                            @else
+                                                <i class="fa fa-toggle-off text-xl text-red-600 inline-block align-[-3px]"></i>
+                                            @endif
+                                        </button>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="text-black pb-2" type="submit">Uitloggen</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @include('components.modals.toggle-online')
+
                         @else
                             {{-- Other Student --}}
                             <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
@@ -30,6 +51,10 @@
                             <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
                             <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
+                            </form>
                         @endif
                     @if(Auth::user()->teacher || Auth::user()->is_admin)
                         {{-- Teacher or Admin --}}
@@ -40,6 +65,10 @@
                         <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
                         <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
                         <a class="text-white hover:text-gray-200" href="{{ route('export', $student->slug) }}">PDF</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
+                        </form>
                     @endif
                     @else
                         {{-- Visitor --}}
@@ -49,11 +78,11 @@
                         <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
                         <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
                         <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
+                        </form>
                     @endif
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
-                    </form>
                 @endauth
 
                 @guest

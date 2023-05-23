@@ -7,6 +7,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Favicons -->
+    @include('layouts.favicons')
+
     <!-- Fonts -->
     @include('layouts.fonts')
 
