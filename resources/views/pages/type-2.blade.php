@@ -16,7 +16,7 @@
 
 @auth
     @if (Auth::user()->student)
-        @if (Auth::user()->student->slug == $student->slug)
+        @if (Auth::user()->student->id == $student->id)
             @include('components.edit-button')
         @endif
     @endif

@@ -245,7 +245,7 @@
                                 <p class="text-green-500"><i class="fa fa-check"></i> Verwerkt</p>
                             @else
                                 <label class="text-red-500"><i class="fa fa-times"></i> Nog niet verwerkt -</label>
-                                <form action="{{ route('process_feedback', ['studentSlug' => $student->slug, 'feedbackId' => $feedback->id]) }}" method="post">
+                                <form action="{{ route('process_feedback', ['studentId' => $student->id, 'feedbackId' => $feedback->id]) }}" method="post">
                                     @csrf
                                     <button class="shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 ml-2 rounded" type="submit"><i class="fa fa-check"></i> Gedaan</button>
                                 </form>

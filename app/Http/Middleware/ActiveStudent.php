@@ -18,10 +18,10 @@ class ActiveStudent
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Student::where('slug', $request->route()->studentSlug)->first()->user->active ||
+        if (Student::where('id', $request->route()->studentId)->first()->user->active ||
             Auth::user()->is_admin ||
             Auth::user()->teacher ||
-            Auth::user()->student->slug == $request->route()->studentSlug) {
+            Auth::user()->student->id == $request->route()->studentId) {
             return $next($request);
         }
 

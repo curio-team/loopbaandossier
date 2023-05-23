@@ -49,7 +49,7 @@ class TeacherController extends Controller
             'feedback' => $request->feedback,
         ]);
 
-        return redirect()->route($page, ['studentSlug' => $student->slug]);
+        return redirect()->route($page, ['studentId' => $student->id]);
     }
 
 }

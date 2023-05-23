@@ -17,7 +17,7 @@ class StudentExists
      */
     public function handle(Request $request, Closure $next)
     {
-        $student = Student::where('slug', $request->route('studentSlug'))->first();
+        $student = Student::where('id', $request->route('studentId'))->first();
 
         if ($student === null) {
             return abort(404);

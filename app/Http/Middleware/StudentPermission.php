@@ -17,10 +17,10 @@ class StudentPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->route('studentSlug') == Auth::user()->student->slug) {
+        if($request->route('studentId') == Auth::user()->student->id) {
             return $next($request);
         } else {
-            return redirect()->route('main', $request->route('studentSlug'));
+            return redirect()->route('main', $request->route('studentId'));
         }
     }
 }

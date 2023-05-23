@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
+            $table->foreignUuid('student_id')->references('id')->on('students')->onDelete('cascade');
 
             $table->unsignedBigInteger('main_header_color')->default(1);
             $table->unsignedBigInteger('main_content_color')->default(8);
@@ -63,8 +63,6 @@ return new class extends Migration
             $table->unsignedBigInteger('networks_content_layout')->default(1);
 
             $table->timestamps();
-
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 

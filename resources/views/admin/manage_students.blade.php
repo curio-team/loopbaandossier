@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <div class="flex items-center pl-5">
-                                    <a href="{{ route('main', $student->slug) }}" class="text-center shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-arrow-right"></i></a>
+                                    <a href="{{ route('main', $student->id) }}" class="text-center shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-arrow-right"></i></a>
                                     <a href="{{ route('admin_manage_student', $student->id) }}" class="text-center shadow bg-blue-400 hover:bg-blue-300 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 mx-1 rounded"><i class="fa fa-pen-to-square"></i></a>
                                     <form action="{{ route('admin_toggle_student_active', $student->id) }}" method="post">
                                         @csrf

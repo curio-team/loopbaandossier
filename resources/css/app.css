@@ -61,6 +61,14 @@ html {
     @apply mx-3 text-gray-100;
 }
 
+.nav-dropdown-links a, .nav-dropdown-links button {
+    @apply text-gray-600 hover:text-gray-400;
+}
+
+.modal-button {
+    color: white !important;
+}
+
 .header-1 {
     background-color: var(--color-1-1);
 }

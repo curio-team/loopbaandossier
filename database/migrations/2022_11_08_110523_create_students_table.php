@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('class_id');
             $table->string('student_number')->unique();
-            $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
             $table->boolean('requires_feedback')->default(false);
             $table->timestamps();

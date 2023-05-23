@@ -32,6 +32,6 @@
 
     document.getElementById("confirm-online-modal-confirm-button").addEventListener("click", function () {
         // javascript redirect
-        window.location.href = "{{ route('toggle_online', $student->slug) }}";
+        window.location.href = "{{ route('toggle_online', $student->id) }}";
     });
 </script>

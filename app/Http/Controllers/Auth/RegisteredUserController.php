@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
         } elseif($user->teacher) {
             return redirect()->route('teacher_dashboard');
         } else {
-            return redirect()->route('main', [$user->student->slug]);
+            return redirect()->route('main', [$user->student->id]);
         }
     }
 }

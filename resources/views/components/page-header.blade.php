@@ -10,22 +10,22 @@
                     </div>
                 </a>
             <div class="flex items-center nav-links md:text-base sm:text-sm font-bold">
-                <a class="text-white hover:text-gray-200" href="{{ route('main', $student->slug) }}" class="{{ (request()->is('main')) ? 'nav-active' : '' }}">Homepagina</a>
+                <a class="text-white hover:text-gray-200" href="{{ route('main', $student->id) }}" class="{{ (request()->is('main')) ? 'nav-active' : '' }}">Homepagina</a>
                 @auth
                     @if(Auth::user()->student)
                         @if($student->id == Auth::user()->student->id)
                             {{-- Owner --}}
-                            <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen {{ $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten {{ $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven {{ $student->feedback->where('page', 'motives')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'motives')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie {{ $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->id) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen {{ $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->id) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten {{ $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->id) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven {{ $student->feedback->where('page', 'motives')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'motives')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->id) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie {{ $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->id) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->id) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
                             <div class="group">
                                 <button class="text-white hover:text-gray-200 hover:nav-dropdown:block">Menu <i class="fa fa-chevron-down"></i></button>
                                 <div class="hidden group-hover:block relative w-0 h-0" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                     <div class="nav-dropdown-links absolute origin-top-right w-28 z-10 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none group-hover:block" role="none">
-                                        <a class="text-black" href="{{ route('export', $student->slug) }}">PDF Export</a>
+                                        <a class="text-black" href="{{ route('export', $student->id) }}">PDF Export</a>
                                         <button id="confirm-online-modal-button" type="button">
                                             <span class="hover:text-gray-400">Online</span>
                                             @if(Auth::user()->student->online)
@@ -45,12 +45,12 @@
 
                         @else
                             {{-- Other Student --}}
-                            <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
-                            <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->id) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->id) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->id) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->id) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->id) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
+                            <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->id) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
@@ -58,13 +58,13 @@
                         @endif
                     @if(Auth::user()->teacher || Auth::user()->is_admin)
                         {{-- Teacher or Admin --}}
-                        <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen {{ $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten {{ $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven {{ $student->feedback->where('page', 'motives')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'motives')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie {{ $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('export', $student->slug) }}">PDF</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->id) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen {{ $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'introduction')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->id) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten {{ $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'qualities')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->id) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven {{ $student->feedback->where('page', 'motives')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'motives')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->id) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie {{ $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'exploration')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->id) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing {{ $student->feedback->where('page', 'experience')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'experience')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->id) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken {{ $student->feedback->where('page', 'networks')->where('confirmed', false)->count() ? '('. $student->feedback->where('page', 'networks')->where('confirmed', false)->count() .')' : '' }}</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('export', $student->id) }}">PDF</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
@@ -72,12 +72,12 @@
                     @endif
                     @else
                         {{-- Visitor --}}
-                        <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
-                        <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->id) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->id) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->id) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->id) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->id) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
+                        <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->id) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="text-white hover:text-gray-200" type="submit">Uitloggen</button>
@@ -86,12 +86,12 @@
                 @endauth
 
                 @guest
-                    <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->slug) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
-                    <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->slug) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
-                    <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->slug) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
-                    <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->slug) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
-                    <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->slug) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
-                    <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->slug) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('introduction', $student->id) }}" class="{{ (request()->is('voorstellen')) ? 'nav-active' : '' }}">Voorstellen</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('qualities', $student->id) }}" class="{{ (request()->is('kwaliteiten')) ? 'nav-active' : '' }}">Kwaliteiten</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('motives', $student->id) }}" class="{{ (request()->is('motieven')) ? 'nav-active' : '' }}">Motieven</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('exploration', $student->id) }}" class="{{ (request()->is('werkexploratie')) ? 'nav-active' : '' }}">Werkexploratie</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('experience', $student->id) }}" class="{{ (request()->is('loopbaansturing')) ? 'nav-active' : '' }}">Loopbaansturing</a>
+                    <a class="text-white hover:text-gray-200" href="{{ route('networks', $student->id) }}" class="{{ (request()->is('netwerken')) ? 'nav-active' : '' }}">Netwerken</a>
                     <a class="text-white hover:text-gray-200" href="{{ route('login') }}">Login</a>
                 @endguest
                 {{-- <a href="#"><i class="fa-solid fa-search"></i></a> --}}

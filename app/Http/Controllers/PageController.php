@@ -20,14 +20,14 @@ class PageController extends Controller
             }
 
             if(auth()->user()->student) {
-                return redirect()->route('main', ['studentSlug' => auth()->user()->student->slug]);
+                return redirect()->route('main', ['studentId' => auth()->user()->student->id]);
             }
         }
         return view('home');
     }
 
-    public function showMain($studentSlug) {
-        $student = Student::where('slug', $studentSlug)->first();
+    public function showMain($studentId) {
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->main_header_color;
         $pageColor = $student->pages->main_content_color;
@@ -39,8 +39,8 @@ class PageController extends Controller
         ]);
     }
 
-    public function showIntroduction($studentSlug) {
-        $student = Student::where('slug', $studentSlug)->first();
+    public function showIntroduction($studentId) {
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->introduction_header_color;
         $pageColor = $student->pages->introduction_content_color;
@@ -61,9 +61,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function showQualities($studentSlug)
+    public function showQualities($studentId)
     {
-        $student = Student::where('slug', $studentSlug)->first();
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->qualities_header_color;
         $pageColor = $student->pages->qualities_content_color;
@@ -84,9 +84,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function showMotives($studentSlug)
+    public function showMotives($studentId)
     {
-        $student = Student::where('slug', $studentSlug)->first();
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->motives_header_color;
         $pageColor = $student->pages->motives_content_color;
@@ -107,9 +107,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function showExploration($studentSlug)
+    public function showExploration($studentId)
     {
-        $student = Student::where('slug', $studentSlug)->first();
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->exploration_header_color;
         $pageColor = $student->pages->exploration_content_color;
@@ -130,9 +130,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function showExperience($studentSlug)
+    public function showExperience($studentId)
     {
-        $student = Student::where('slug', $studentSlug)->first();
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->experience_header_color;
         $pageColor = $student->pages->experience_content_color;
@@ -153,9 +153,9 @@ class PageController extends Controller
         ]);
     }
 
-    public function showNetworks($studentSlug)
+    public function showNetworks($studentId)
     {
-        $student = Student::where('slug', $studentSlug)->first();
+        $student = Student::where('id', $studentId)->first();
 
         $headerColor = $student->pages->networks_header_color;
         $pageColor = $student->pages->networks_content_color;

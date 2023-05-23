@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Student;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
@@ -27,7 +26,7 @@ class StudentFactory extends Factory
         return [
             'user_id' => $user->id,
             'student_number' => 'd'.fake()->numerify('######'),
-            'slug' => Str::of($userName)->slug(),
+            'online' => true,
             'created_at' => now(),
             'updated_at' => now(),
         ];

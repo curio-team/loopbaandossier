@@ -59,7 +59,7 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('introduction', $user->student->slug);
+        return redirect()->route('introduction', $user->student->id);
     }
 
     public function manageQualities()
@@ -107,7 +107,7 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('qualities', $user->student->slug);
+        return redirect()->route('qualities', $user->student->id);
     }
 
     public function manageMotives() {
@@ -154,7 +154,7 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('motives', $user->student->slug);
+        return redirect()->route('motives', $user->student->id);
     }
 
     public function manageExploration() {
@@ -201,7 +201,7 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('exploration', $user->student->slug);
+        return redirect()->route('exploration', $user->student->id);
     }
 
     public function manageExperience()
@@ -249,7 +249,7 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('experience', $user->student->slug);
+        return redirect()->route('experience', $user->student->id);
     }
 
     public function manageNetworks() {
@@ -296,12 +296,12 @@ class ManageController extends Controller
 
         $pages->save();
 
-        return redirect()->route('networks', $user->student->slug);
+        return redirect()->route('networks', $user->student->id);
     }
 
-    public function processFeedback($studentSlug, $feedbackId) {
+    public function processFeedback($studentId, $feedbackId) {
         $feedback = Feedback::findOrFail($feedbackId);
-        if ($feedback->student->slug != $studentSlug) {
+        if ($feedback->student->id != $studentId) {
             abort(404);
         }
 
@@ -324,13 +324,13 @@ class ManageController extends Controller
 
     private function uploadImage(Request $request, User $user) {
         // Create directory if it does not already exist and rewrite
-        Storage::makeDirectory('public/images/'. $user->student->slug);
+        Storage::makeDirectory('public/images/'. $user->student->id);
 
         // Upload the image
-        $src = Storage::putFile('public/images/'. $user->student->slug, $request->content_image);
+        $src = Storage::putFile('public/images/'. $user->student->id, $request->content_image);
         $src = str_replace('public', 'storage', $src);
         chmod($src, 0755);
-        chmod(storage_path('app/public/images/'. $user->student->slug), 0755);
+        chmod(storage_path('app/public/images/'. $user->student->id), 0755);
 
         // TODO: Fix ImageOptimizer bug. Can't find the uploaded image anymore.
         //ImageOptimizer::optimize($src);
@@ -355,8 +355,8 @@ class ManageController extends Controller
         $student->save();
     }
 
-    public function exportToPDF($studentSlug) {
-        $student = Student::where('slug', $studentSlug)->firstOrFail();
+    public function exportToPDF($studentId) {
+        $student = Student::where('id', $studentId)->firstOrFail();
 
         $pdf = PDF::loadView('pdf.export', [
             'student' => $student,
@@ -373,13 +373,21 @@ class ManageController extends Controller
             'fontDir' => storage_path('fonts'),
         ]);
 
-        return $pdf->stream('loopbaandossier-'.$student->slug.'.pdf');
+        return $pdf->stream('loopbaandossier-'.$student->id.'.pdf');
 
 
     }
 
-    public function test($studentSlug) {
-        $student = Student::where('slug', $studentSlug)->firstOrFail();
+    public function toggleOnline() {
+        $student = Auth()->user()->student;
+        $student->online = !$student->online;
+        $student->save();
+
+        return back();
+    }
+
+    public function test($studentId) {
+        $student = Student::where('id', $studentId)->firstOrFail();
 
         return view('pdf.export', ['student' => $student]);
 

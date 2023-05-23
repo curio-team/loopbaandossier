@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/docent/{teacherId}/toggle-class/{classId}', [AdminController::class, 'toggleTeacherClass'])->name('admin_toggle_teacher_class');
 });
 
-Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'student']], function () {
+Route::group(['prefix' => '{studentId}/beheren', 'middleware' => ['auth', 'student', 'active']], function () {
     Route::get('/voorstellen', [ManageController::class, 'manageIntroduction'])->name('manage_introduction');
     Route::post('/voorstellen', [ManageController::class, 'processManageIntroduction'])->name('process_manage_introduction');
     Route::get('/kwaliteiten', [ManageController::class, 'manageQualities'])->name('manage_qualities');
@@ -59,9 +59,10 @@ Route::group(['prefix' => '{studentSlug}/beheren', 'middleware' => ['auth', 'stu
     Route::post('/netwerken', [ManageController::class, 'processManageNetworks'])->name('process_manage_networks');
     Route::post('/feedback/verwerken/{feedbackId}', [ManageController::class, 'processFeedback'])->name('process_feedback');
     Route::get('/exporteren', [ManageController::class, 'exportToPDF'])->name('export');
+    Route::get('/online', [ManageController::class, 'toggleOnline'])->name('toggle_online');
 });
 
-Route::group(['prefix' => '{studentSlug}', 'middleware' => ['student.exists', 'active']], function () {
+Route::group(['prefix' => '{studentId}', 'middleware' => ['student.exists', 'active', 'online']], function () {
     Route::get('/', [PageController::class, 'showMain'])->name('main');
     Route::get('/voorstellen', [PageController::class, 'showIntroduction'])->name('introduction');
     Route::get('/kwaliteiten', [PageController::class, 'showQualities'])->name('qualities');

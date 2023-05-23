@@ -85,7 +85,6 @@ class UserSeeder extends Seeder
 
         $student = $studentUser->student()->save(StudentFactory::new()->create([
             'class_id' => $classes->first()->id,
-            'slug' => Str::of($studentUser->name)->slug(),
             'created_at' => now(),
             'updated_at' => now(),
         ]));

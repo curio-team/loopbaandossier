@@ -21,7 +21,7 @@
                         @foreach ($students as $student)
                             <tr>
                                 <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                                    <a href="{{ route('main', $student->slug) }}" class="text-blue-500">{{ $student->user->name }}</a>
+                                    <a href="{{ route('main', $student->id) }}" class="text-blue-500">{{ $student->user->name }}</a>
                                 </td>
                                 <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                                     {{ date_format($student->updated_at, 'j F Y - H:i') }}
