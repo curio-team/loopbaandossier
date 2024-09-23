@@ -25,7 +25,7 @@
                         </label>
                     </div>
                     <div class="md:w-4/5">
-                        <textarea name="content_text">{{ $pageData['content_text'] }}</textarea>
+                        <textarea name="content_text" class="ckeditor">{{ $pageData['content_text'] }}</textarea>
                     </div>
                 </div>
 
@@ -269,7 +269,7 @@
 </script>
 
 @include('components.ckeditor', [
-    'textareaNames' => [
+    'textareaIds' => [
         'content_text',
     ]
 ])
