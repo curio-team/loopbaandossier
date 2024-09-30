@@ -324,7 +324,10 @@ class ManageController extends Controller
 
     private function uploadImage(Request $request, User $user) {
         // Create directory if it does not already exist and rewrite
+        chmod(asset('storage'), 0755);
+        chmod(asset('storage/images'), 0755);
         Storage::makeDirectory('public/images/'. $user->student->id);
+        chmod(storage_path('app/public/images/'. $user->student->id), 0755);
 
         // Get the original file extension
         $extension = $request->file('content_image')->getClientOriginalExtension();
