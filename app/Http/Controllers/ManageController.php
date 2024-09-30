@@ -326,14 +326,22 @@ class ManageController extends Controller
         // Create directory if it does not already exist and rewrite
         Storage::makeDirectory('public/images/'. $user->student->id);
 
-        // Upload the image
-        $src = Storage::putFile('public/images/'. $user->student->id, $request->content_image);
+        // Get the original file extension
+        $extension = $request->file('content_image')->getClientOriginalExtension();
+
+        // Upload the image with the original extension
+        $src = Storage::putFileAs(
+            'public/images/'. $user->student->id,
+            $request->file('content_image'),
+            uniqid() . '.' . $extension
+        );
+
         $src = str_replace('public', 'storage', $src);
-        chmod($src, 0755);
         chmod(storage_path('app/public/images/'. $user->student->id), 0755);
+        chmod(storage_path('app/' . $src), 0755);
 
         // TODO: Fix ImageOptimizer bug. Can't find the uploaded image anymore.
-        //ImageOptimizer::optimize($src);
+        ImageOptimizer::optimize($src);
 
         return $src;
     }

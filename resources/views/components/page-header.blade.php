@@ -106,7 +106,7 @@
                 </div>
             </div>
             {{-- Mobile menu --}}
-            <div id="mobile-menu" class="hidden xl:hidden flex flex-col items-center bg-white text-black w-full">
+            <div id="mobile-menu" class="xl:hidden flex flex-col items-center bg-white text-black w-full">
                 <a class="py-2 w-full text-center hover:bg-gray-200 {{ (request()->is('main')) ? 'nav-active' : '' }}" href="{{ route('main', $student->id) }}">Homepagina</a>
                 @auth
                 @if(Auth::user()->student)
