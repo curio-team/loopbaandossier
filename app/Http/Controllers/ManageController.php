@@ -324,8 +324,8 @@ class ManageController extends Controller
 
     private function uploadImage(Request $request, User $user) {
         // Create directory if it does not already exist and rewrite
-        chmod(asset('storage'), 0755);
-        chmod(asset('storage/images'), 0755);
+        chmod(public_path('storage'), 0755);
+        chmod(public_path('storage/images'), 0755);
         Storage::makeDirectory('public/images/'. $user->student->id);
         chmod(storage_path('app/public/images/'. $user->student->id), 0755);
 
@@ -339,13 +339,7 @@ class ManageController extends Controller
             uniqid() . '.' . $extension
         );
 
-        $directoryPath = storage_path('app/public/images/'. $user->student->id);
         $filePath = storage_path('app/' . $src);
-
-        // Ensure the directory and file exist before changing permissions
-        if (file_exists($directoryPath)) {
-            chmod($directoryPath, 0755);
-        }
 
         if (file_exists($filePath)) {
             chmod($filePath, 0755);
