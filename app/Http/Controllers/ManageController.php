@@ -337,11 +337,20 @@ class ManageController extends Controller
         );
 
         $src = str_replace('public', 'storage', $src);
-        chmod(storage_path('app/public/images/'. $user->student->id), 0755);
-        chmod(storage_path('app/' . $src), 0755);
+        $directoryPath = storage_path('app/public/images/'. $user->student->id);
+        $filePath = storage_path('app/' . $src);
+
+        // Ensure the directory and file exist before changing permissions
+        if (file_exists($directoryPath)) {
+            chmod($directoryPath, 0755);
+        }
+
+        if (file_exists($filePath)) {
+            chmod($filePath, 0755);
+        }
 
         // TODO: Fix ImageOptimizer bug. Can't find the uploaded image anymore.
-        ImageOptimizer::optimize($src);
+        ImageOptimizer::optimize($filePath);
 
         return $src;
     }
