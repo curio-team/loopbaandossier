@@ -1,4 +1,4 @@
-<div class="mx-4">
+<div class="mx-4 flex flex-col items-center">
     @if($image)
         <img src="{{ $image  }}" alt="{{ $title }}" class="h-40 w-40 object-cover"><br>
     @else
