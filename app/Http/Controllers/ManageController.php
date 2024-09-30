@@ -336,7 +336,6 @@ class ManageController extends Controller
             uniqid() . '.' . $extension
         );
 
-        $src = str_replace('public', 'storage', $src);
         $directoryPath = storage_path('app/public/images/'. $user->student->id);
         $filePath = storage_path('app/' . $src);
 
@@ -349,8 +348,9 @@ class ManageController extends Controller
             chmod($filePath, 0755);
         }
 
-        // TODO: Fix ImageOptimizer bug. Can't find the uploaded image anymore.
         ImageOptimizer::optimize($filePath);
+
+        $src = str_replace('public', 'storage', $src);
 
         return $src;
     }
