@@ -67,10 +67,10 @@
             {{-- <div style="float: right; margin-bottom: 30px;"> --}}
             <table>
                 {{-- Introduction --}}
-                @if($student->pages->introduction_header_title && $student->pages->introduction_content_text)
+                @if($student->pages->introduction_content_text)
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->introduction_header_title }}</h1>
+                            <h1>{{ $student->pages->introduction_header_title ?? 'Dit ben ik!' }}</h1>
                             @if($student->pages->introduction_content_image)
                                 @php
                                     // get image filetype
@@ -83,14 +83,23 @@
                             {!! $student->pages->introduction_content_text !!}
                         </div>
                     </td></tr>
-                    <div class="page-break"></div>
+                    @php
+                        $pageBreak = true;
+                    @endphp
+
                 @endif
 
                 {{-- Qualities --}}
-                @if($student->pages->qualities_header_title && $student->pages->qualities_content_text)
+                @if($student->pages->qualities_content_text)
+                    @if ($pageBreak)
+                        <div class="page-break"></div>
+                        @php
+                            $pageBreak = false;
+                        @endphp
+                    @endif
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->qualities_header_title }}</h1>
+                            <h1>{{ $student->pages->qualities_header_title ?? 'Dit zijn mijn kwaliteiten!' }}</h1>
                             @if($student->pages->qualities_content_image)
                                 @php
                                     // get image filetype
@@ -103,14 +112,23 @@
                             {!! $student->pages->qualities_content_text !!}
                         </div>
                     </td></tr>
-                    <div class="page-break"></div>
+
+                    @php
+                        $pageBreak = true;
+                    @endphp
                 @endif
 
                 {{-- Motives --}}
-                @if($student->pages->motives_header_title && $student->pages->motives_content_text)
+                @if($student->pages->motives_content_text)
+                    @if ($pageBreak)
+                        <div class="page-break"></div>
+                        @php
+                            $pageBreak = false;
+                        @endphp
+                    @endif
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->motives_header_title }}</h1>
+                            <h1>{{ $student->pages->motives_header_title ?? 'Hierdoor raak ik gemotiveerd!' }}</h1>
                             @if($student->pages->motives_content_image)
                                 @php
                                     // get image filetype
@@ -123,14 +141,22 @@
                             {!! $student->pages->motives_content_text !!}
                         </div>
                     </td></tr>
-                    <div class="page-break"></div>
+                    @php
+                        $pageBreak = true;
+                    @endphp
                 @endif
 
                 {{-- Exploration --}}
-                @if($student->pages->exploration_header_title && $student->pages->exploration_content_text)
+                @if($student->pages->exploration_content_text)
+                    @if ($pageBreak)
+                        <div class="page-break"></div>
+                        @php
+                            $pageBreak = false;
+                        @endphp
+                    @endif
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->exploration_header_title }}</h1>
+                            <h1>{{ $student->pages->exploration_header_title ?? 'Dit is mijn onderzoek!' }}</h1>
                             @if($student->pages->exploration_content_image)
                                 @php
                                     // get image filetype
@@ -143,14 +169,22 @@
                             {!! $student->pages->exploration_content_text !!}
                         </div>
                     </td></tr>
-                    <div class="page-break"></div>
+                    @php
+                        $pageBreak = true;
+                    @endphp
                 @endif
 
                 {{-- Experience --}}
-                @if($student->pages->experience_header_title && $student->pages->experience_content_text)
+                @if($student->pages->experience_content_text)
+                    @if ($pageBreak)
+                        <div class="page-break"></div>
+                        @php
+                            $pageBreak = false;
+                        @endphp
+                    @endif
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->experience_header_title }}</h1>
+                            <h1>{{ $student->pages->experience_header_title ?? 'Hier komt mijn ervaring vandaan!'}}</h1>
                             @if($student->pages->experience_content_image)
                                 @php
                                     // get image filetype
@@ -163,14 +197,22 @@
                             {!! $student->pages->experience_content_text !!}
                         </div>
                     </td></tr>
-                    <div class="page-break"></div>
+                    @php
+                        $pageBreak = true;
+                    @endphp
                 @endif
 
                 {{-- Networks --}}
-                @if($student->pages->networks_header_title && $student->pages->networks_content_text)
+                @if($student->pages->networks_content_text)
+                    @if ($pageBreak)
+                        <div class="page-break"></div>
+                        @php
+                            $pageBreak = false;
+                        @endphp
+                    @endif
                     <tr><td>
                         <div style="padding: 0px 0px 10px 30px; margin: 15px;">
-                            <h1>{{ $student->pages->networks_header_title }}</h1>
+                            <h1>{{ $student->pages->networks_header_title ?? 'Deze mensen en bedrijven kennen mij!' }}</h1>
                             @if($student->pages->networks_content_image)
                                 @php
                                     // get image filetype
