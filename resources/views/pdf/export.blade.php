@@ -58,6 +58,8 @@
     </style>
 
     <body style="background-color:rgba(120, 3, 74, 1); padding: 30px;">
+
+
         <header>
             <img src="{{ asset('assets/images/curio-01-zwart-logo-rgb.png') }}" alt="Curio Logo" style="width: 20%; margin: 15px; float: right;">
         </header>
@@ -66,6 +68,11 @@
         <div style="background-color:white; height: 255mm; width: 100%; position: relative;">
             {{-- <div style="float: right; margin-bottom: 30px;"> --}}
             <table>
+                <tr><td>
+                    <div style="padding: 0px 0px 10px 30px; margin: 15px;">
+
+                    </div>
+                </td></tr>
                 {{-- Introduction --}}
                 @if($student->pages->introduction_content_text)
                     <tr><td>
